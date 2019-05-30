@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>星星评分</title>
+    <style type="text/css">
+        .starbox span {
+            width: 27px;
+            height: 28px;
+            display: inline-block;
+            background: url(images/star.gif) no-repeat 0px 0px;
+            cursor: pointer;
+            float: left;
+        }
+
+        .starbox strong {
+            float: left;
+            padding-top: 6px;
+            padding-left: 10px;
+        }
+        .starbox .on {
+            background-position: 0px -29px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var aStar = document.querySelectorAll('.starbox span');
+            var oS = document.querySelector('.starbox .score');
+            for(let i =0;i<aStar.length;i++){
+                aStar[i].onclick = function(){
+                    for(let j =0;j<aStar.length;j++){
+                        aStar[j].className = '';
+                    }
+                    for(let j =0;j<=i;j++){
+                        aStar[j].className = 'on'; 
+                    }
+                    oS.innerHTML = (i+1)+'分';
+                };
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class='starbox'>
+        <span data-index="0"></span>
+        <span data-index="1"></span>
+        <span data-index="2"></span>
+        <span data-index="3"></span>
+        <span data-index="4"></span>
+        <strong class='score'>0分</strong>
+    </div>
+</body>
+</html>
