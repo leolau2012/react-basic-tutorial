@@ -5,15 +5,13 @@ class App extends Component {
   render() {
     return(
       <div>
-        <RatingStar />
+        <RatingStar unit={'分数'}></RatingStar>
       </div>
-
     );
   }
 }
-
 ReactDOM.render(
   <App />,
   document.getElementById('root')
 )
-export default RatingStar;
+export default App;

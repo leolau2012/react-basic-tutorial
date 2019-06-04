@@ -2,25 +2,30 @@ import React, { Component } from 'react'
 import './style.css'
 class RatingStar extends Component {
     constructor(props) {
-        super(props)
+        super(props);
+        //1.这里定义
         this.state = {
             score: 0
         }
     }
-    onClick(ev) {
+    
+    handleClick = (ev) => {
+        //2.这里改
         this.setState({
             score: Number(ev.target.dataset.index) + 1
         });
     }
     render() {
+        console.log(this.props.unit);
+        const score = this.state.score;
         return (
-            <div class="starbox">
-                <span data-index="0" class="on"></span>
-                <span data-index="1" class="on"></span>
-                <span data-index="2" class="on"></span>
-                <span data-index="3" class="on"></span>
-                <span data-index="4" class=""></span>
-                <strong class="score">4分</strong>
+            <div className="starbox">
+                <span data-index="0" onClick={this.handleClick} className={score >= 1 ? 'on' : ''}></span>
+                <span data-index="1" onClick={this.handleClick} className={score >= 2 ? 'on' : ''}></span>
+                <span data-index="2" onClick={this.handleClick} className={score >= 3 ? 'on' : ''}></span>
+                <span data-index="3" onClick={this.handleClick} className={score >= 4 ? 'on' : ''}></span>
+                <span data-index="4" onClick={this.handleClick} className={score >= 5 ? 'on' : ''}></span>
+                <strong className="score">{this.state.score}{this.props.unit}</strong>
             </div>
         );
     }
